@@ -1,21 +1,38 @@
 import os
 os.system("cls")
 
+nombre = ""
+listaNombre = [] 
 
-def validar_lista_numeros(mensaje):
+while True:
+
     while True:
+        print ("1.- Agregar alumnos")
+        print ("2.- Mostrar todos los alumnos")
+        print ("3.- Salir")
+
         try:
-            lista_numeros = [int(num) for num in input(mensaje).split()]
-            
-            return lista_numeros
+            opcion = int(input("\nIngrese su eleccion (1/2/3): "))
+            if (1 <= opcion and opcion <=3):
+                break
+            else:
+                print("Por favor seleccione las opciones mostradas (1/2/3).")
         except ValueError:
-            print("Error: Ingrese una lista de números enteros válidos separados por espacios.")
+            print("ERROR. Ingrese un dato valido de numero entero (1/2/3).")
+    
+    if opcion == 1:
+        while True:
+            nombre = input("\nIngrese su nombre: ")
+            if (nombre.isalpha()):
+                print("Su nombre se ingreso correctamente.")
+                listaNombre.append(nombre)
+                break
+            else:
+                print("\nIngrese su nombre correctamente: ")   
 
+    if opcion == 2:
+        print (listaNombre)
 
-numeros_ingresados = validar_lista_numeros("Ingrese una lista de números enteros separados por espacios: ")
+    if opcion == 3:
+        break
 
-numeros_pares = [num for num in numeros_ingresados if num % 2 == 0]
-numeros_impares = [num for num in numeros_ingresados if num % 2 != 0]
-
-print(f"Números pares: {numeros_pares}")
-print(f"Números impares: {numeros_impares}")
